@@ -11,6 +11,10 @@ namespace OPG.Models
 {
     public class AppDbContext : DbContext
     {
+        public AppDbContext()
+        {
+        }
+
         public AppDbContext ( DbContextOptions<AppDbContext> options ) : base ( options )
         {
 
@@ -18,6 +22,12 @@ namespace OPG.Models
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Order> Order { get; set; }
+
+        internal object Find(int price)
+        {
+            throw new NotImplementedException();
+        }
+
         //public DbSet<OrderProduct> OrderProduct { get; set; }
         public DbSet<Payment> Payment { get; set; }
         public DbSet<Rating> Rating { get; set; }

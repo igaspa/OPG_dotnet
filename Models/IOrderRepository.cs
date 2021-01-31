@@ -8,6 +8,9 @@ namespace OPG.Models
 {
     public interface IOrderRepository
     {
-        
+        void viewOrder();
+        void cancelOrder(int OrderId);
+        void UpdateOrder();
+        void CalculatePrice(int Price);
     }
 }

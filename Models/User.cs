@@ -22,7 +22,7 @@ namespace OPG.Models
         public int ZipCode { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public ICollection<Seller> Seller { get; set; }
+
         public ICollection<Order> Order { get; set; }
         public ICollection<Rating> Rating { get; set; }
     }
