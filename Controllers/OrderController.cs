@@ -10,46 +10,52 @@ namespace OPG.Controllers
         private readonly IProductRepository _productRepository;
         private readonly Order _order;
 
-        public OrderController ( IProductRepository productRepository, Order order )
+        public OrderController(IProductRepository productRepository, Order order)
         {
             _productRepository = productRepository;
             _order = order;
         }
 
-        public ViewResult Cart ()
+        public ViewResult Cart()
         {
-            var items = _order.GetOrderItems ();
+            var items = _order.GetOrderItems();
             _order.OrderProducts = items;
 
             var shoppingCartViewModel = new OrderViewModel
             {
                 Order = _order,
-                OrderTotal = _order.GetOrderTotal ()
+                OrderTotal = _order.GetOrderTotal()
             };
 
-            return View ( shoppingCartViewModel );
+            return View(shoppingCartViewModel);
         }
 
-        public RedirectToActionResult AddToOrder ( int productId )
+        public RedirectToActionResult AddToOrder(int productId)
         {
-            var selectedProduct = _productRepository.AllProducts.FirstOrDefault ( p => p.ProductId == productId );
+            var selectedProduct = _productRepository.AllProducts.FirstOrDefault(p => p.ProductId == productId);
 
-            if ( selectedProduct != null )
+            if (selectedProduct != null)
             {
-                _order.AddToOrder ( selectedProduct, 1 );
+                _order.AddToOrder(selectedProduct, 1);
             }
-            return RedirectToAction ( "Cart" );
+            return RedirectToAction("Cart");
         }
 
-        public RedirectToActionResult RemoveFromOrder ( int productId )
+        public RedirectToActionResult RemoveFromOrder(int productId)
         {
-            var selectedProduct = _productRepository.AllProducts.FirstOrDefault ( p => p.ProductId == productId );
+            var selectedProduct = _productRepository.AllProducts.FirstOrDefault(p => p.ProductId == productId);
 
-            if ( selectedProduct != null )
+            if (selectedProduct != null)
             {
-                _order.RemoveFromOrder ( selectedProduct );
+                _order.RemoveFromOrder(selectedProduct);
             }
-            return RedirectToAction ( "Index" );
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult PaymentSuccessfull() {
+            {
+                return RedirectToAction("PaymentSuccessfull");
+            }
         }
     }
     
