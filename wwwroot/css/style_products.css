@@ -156,4 +156,6 @@ footer {
 
 .thumbnail {
      background-image: url('../images/products.png');
+     height: 250px;
+     background-size:cover;
 }
