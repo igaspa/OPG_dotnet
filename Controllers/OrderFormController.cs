@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OPG.Models;
 
 namespace OPG.Controllers
 {
+    //[Authorize]
     public class OrderFormController: Controller
     {
         private readonly IOrderFormRepository _orderFormRepository;
         private readonly Order _order;
 
-        public OrderFormController (IOrderFormRepository orderFormRepository,Order order)
+        public OrderFormController (IOrderFormRepository orderFormRepository, Order order)
         {
             _orderFormRepository = orderFormRepository;
             _order = order;
@@ -38,7 +40,7 @@ namespace OPG.Controllers
         }
         public IActionResult CheckoutComplete ()
         {
-            ViewBag.CheckoutCompleteMessage = "Thanks for your order.";
+            ViewBag.CheckoutCompleteMessage = "Thanks for your order!";
             return View ();
         }
     }

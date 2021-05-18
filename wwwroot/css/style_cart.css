@@ -1,4 +1,4 @@
-﻿* {
+﻿﻿* {
     box-sizing: border-box;
 }
 
@@ -6,7 +6,7 @@
     background-image: url('../images/cart.jpg');
     background-size: cover;
     width: 100%;
-    height: 620px;
+    height: 540px;
 }
 
 .table {
@@ -78,22 +78,18 @@ h4 {
 }
 
 .section-box {
-    overflow-x: auto;
     border-color: lightslategrey;
-    width: 750px;
+    width: 80%;
     height: 250px;
-    margin: 0;
+    margin: 22px 120px;
     background: #FFFFFF;
-    box-shadow: 4px 3px 3px 4px rgba(0,0,0,0.10);
+    box-shadow: 4px 3px 3px 4px rgb(0 0 0 / 10%);
     display: flex;
     flex-direction: column;
     background-image: none;
     background-color: #fcfcfc;
     float: left;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    margin-left: 20px;
-    margin-top: 15px;
+    overflow: auto;
 }
 
 #checkout, .p {
@@ -116,4 +112,8 @@ h4 {
     text-align: center;
     width: 100%;
     text-align-last: center;
+}
+
+table.table.table-bordered.table-striped {
+    background-color: beige;
 }

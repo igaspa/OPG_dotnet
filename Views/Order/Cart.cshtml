@@ -24,7 +24,6 @@
                     </tr>
                 </thead>
 
-
                 <tbody>
                     @foreach (var line in Model.Order.OrderItems)
                     {
@@ -51,7 +50,7 @@
                 </tfoot>
             </table>
         </div>
-        <div id="checkout" style="display:none">
+        @*<div id="checkout" style="display:none">
             <p>Pay with:</p>
 
             <label class="container">
@@ -74,13 +73,13 @@
                 <button type="button" class="btn btn-outline-success" asp-controller="Product" asp-action="EndOrder" onclick="redirectingPaymentSuccessfull()">Confirm and pay</button>
             </p>
 
-        </div>
+        </div>*@
 
 
         <div class="btn-block">
             <button type="button" class="btn btn-link" asp-controller="Product" asp-action="Shop" onclick="redirectingProducts()">Back to shopping</button>
             @*<button type="button" class="btn btn-outline-success" asp-controller="OrderForm" asp-action="Checkout" onclick="redirectingOrderForm()">Checkout</button>*@
-            <a  type="button" class="btn btn-outline-success" asp-controller="OrderForm" asp-action="Checkout">Checkout</a>
+            <a type="button" class="btn btn-outline-success" asp-controller="OrderForm" asp-action="Checkout">Checkout</a>
         </div>
 
 

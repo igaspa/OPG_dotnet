@@ -1,15 +1,14 @@
-﻿.contact 
-{
-    height:520px;
+﻿.contact {
+    height: 520px;
     text-align: center;
     padding-top: 100px;
     padding-bottom: 50px;
     font-family: 'Font Awesome 5 Free';
     background-image: url('/images/contact.png');
-    background-size:cover;
-    font-size:25px;
-    color:darkslategrey;
-
+    background-size: cover;
+    font-size: 25px;
+    margin-top: 20px;
+    color: #4a4136
 }
 
 
@@ -19,6 +18,7 @@ button
     color: darkslategray;
     width: 100px;
     border-radius: 30px;
+    background-color: white;
 
 }
 
@@ -57,16 +57,17 @@ h4
 
 
 
-.form-group 
-{
+.form-group {
     text-align: center;
     clear: both;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top:20px;
+    margin-top: 20px;
+    border-radius: 17px;
 }
+
 
 #form 
 {
@@ -82,4 +83,9 @@ h4
     border-color: #1e32656b;
     margin-bottom: 40px;
     margin-top:10px;
+}
+
+.form-control 
+{
+    border-radius:17px;
 }

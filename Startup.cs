@@ -5,8 +5,6 @@ using Microsoft.Extensions.Hosting;
 using OPG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using Microsoft.Extensions.Logging;
 
 namespace OPG
 {
@@ -25,16 +23,19 @@ namespace OPG
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-           
+
+            services.AddDefaultIdentity<StoreUser> ().AddEntityFrameworkStores<AppDbContext> ();
+
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderFormRepository, OrderFormRepository> ();
+
             services.AddScoped<Order> ( sp => Order.GetOrder( sp ) );
-            services.AddControllersWithViews();
-            services.AddMvc();
+            
             services.AddHttpContextAccessor ();
             services.AddSession ();
-            services.AddLogging ();
+            services.AddControllersWithViews();
+            services.AddRazorPages ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,12 +46,13 @@ namespace OPG
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseNodeModules ();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseSession ();
             app.UseRouting();
+            app.UseAuthentication ();
+            app.UseAuthorization ();
             
 
             app.UseEndpoints(endpoints =>
@@ -59,14 +61,15 @@ namespace OPG
                     name: "Default",
                     pattern: "{controller}/{action}/{id?}",
                     new {controller="home", action="index"}
-                    ); 
-                endpoints.MapControllerRoute ( 
+                    );
+                endpoints.MapRazorPages ();
+                endpoints.MapControllerRoute (
                     name: "Products",
                     pattern: "{controller}/{action}/{id?}",
                     new { controller = "Product", action = "List" }
                     );
-                endpoints .MapControllerRoute ( 
-                    name:"Register",
+                endpoints.MapControllerRoute (
+                    name: "Register",
                     pattern: "{controller}/{action}/{id?}",
                     new { controller = "Form", action = "login" }
                     );

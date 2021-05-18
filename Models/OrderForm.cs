@@ -10,6 +10,8 @@ namespace OPG.Models
         [BindNever]
         public int OrderFormId { get; set; }
         public List<OrderFormDetail> OrderFormDetails { get; set; }
+        public StoreUser User { get; set; }
+        public int UserId { get; set; }
 
         [Required ( ErrorMessage = "Please enter your first name" )]
         [Display ( Name = "First name" )]
@@ -26,7 +28,7 @@ namespace OPG.Models
         [Display ( Name = "Address  1" )]
         public string Address1 { get; set; }
 
-        [Display ( Name = "Address Line 2" )]
+        [Display ( Name = "Address 2" )]
         public string Address2 { get; set; }
 
         [Required ( ErrorMessage = "Please enter your zip code" )]
